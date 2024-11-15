@@ -1,0 +1,136 @@
+class Person {
+    protected String name;
+    protected int age;
+
+    // Constructor for Person
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display name and age
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+class Student extends Person {
+    private String student_id;
+
+    // Constructor for Student
+    public Student(String name, int age, String student_id) {
+        super(name, age);
+        this.student_id = student_id;
+    }
+
+    // Method to display all details
+    public void show_details() {
+        display();
+        System.out.println("Student ID: " + student_id);
+    }
+}
+
+// Main method to test the classes
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student("Alice", 20, "S12345");
+        student.show_details();
+    }
+}
+
+
+
+class Vehicle {
+    public void info() {
+        System.out.println("This is a vehicle");
+    }
+}
+
+class Car extends Vehicle {
+    public void car_info() {
+        System.out.println("This is a car");
+    }
+}
+
+class ElectricCar extends Car {
+    public void battery_info() {
+        System.out.println("This car has a battery");
+    }
+}
+
+// Main method to demonstrate multilevel inheritance
+public class Main {
+    public static void main(String[] args) {
+        ElectricCar myElectricCar = new ElectricCar();
+        myElectricCar.info();         // Calls method from Vehicle class
+        myElectricCar.car_info();     // Calls method from Car class
+        myElectricCar.battery_info(); // Calls method from ElectricCar class
+    }
+}
+
+
+class Teacher {
+    public void description() {
+        System.out.println("I am a Teacher.");
+    }
+}
+
+class Author {
+    public void description() {
+        System.out.println("I am an Author.");
+    }
+}
+
+class TutorAuthor extends Teacher {
+    // Using super to resolve conflicts
+    public void show_teacher_description() {
+        super.description(); // Calls the method from Teacher class
+    }
+
+    // Method to call Author description
+    public void show_author_description() {
+        new Author().description(); // Calls the method from Author class
+    }
+}
+
+// Main method to demonstrate multiple inheritance-like behavior
+public class Main {
+    public static void main(String[] args) {
+        TutorAuthor tutorAuthor = new TutorAuthor();
+        tutorAuthor.show_teacher_description();
+        tutorAuthor.show_author_description();
+    }
+}
+
+
+class Animal {
+    public void sound() {
+        System.out.println("Animals make sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+// Main method to demonstrate hierarchical inheritance
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        Cat cat = new Cat();
+
+        dog.sound(); // Calls Dog's sound method
+        cat.sound(); // Calls Cat's sound method
+    }
+}
